@@ -12,22 +12,22 @@ Steps
 - You will need to have two terminals. One for the front-end, and another for the front-end.
 - Step 2
 
-# Front-end:
+## Front-end:
 
 Run the following commands in the terminal:
 
-```$ cd Client     
+```console
+$ cd Client     
 $ npm install
-$ npm run dev```
+$ npm run dev
+```
 
-# Back-end:
+## Back-end:
 
 In the second terminal, run the following commands:
 
-```
+```console
 $ cd Server
 ```
 
-# Pull Request:
-
-...
+## Pull Request:
