@@ -9,8 +9,8 @@ Applied Research Fall 2022 Project Boardwalk App
 
 Steps
 
-- You will need to have two terminals. One for the front-end, and another for the front-end.
-- Step 2
+- Install [Node.js](https://nodejs.org/en/).
+- You will need to have two terminals. One for the front-end, and another for the back-end.
 
 ## Front-end:
 
@@ -31,3 +31,4 @@ $ cd Server
 ```
 
 ## Pull Request:
+
