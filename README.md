@@ -1,17 +1,33 @@
 # Application-Building-Platform
 
-a platform to replace the classic method of calling and emailing business owners to collect the details and present them to underwriters with a digital platform.
+Applied Research Fall 2022 Project Boardwalk App
 
-# front-end set up
+# About
+`A platform to replace the classic method of calling and emailing business owners to collect the details and present them to underwriters with a digital platform.`
 
-cd Client     
+# Project Set up:
 
-npm install
+Steps
 
-npm run dev
+- You will need to have two terminals. One for the front-end, and another for the front-end.
+- Step 2
 
-# back-end set up
+# Front-end:
 
-cd Server
+Run the following commands in the terminal:
+
+```$ cd Client     
+$ npm install
+$ npm run dev```
+
+# Back-end:
+
+In the second terminal, run the following commands:
+
+```
+$ cd Server
+```
+
+# Pull Request:
 
 ...
