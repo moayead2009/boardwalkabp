@@ -1,34 +1,29 @@
 # Application-Building-Platform
 
-Applied Research Fall 2022 Project Boardwalk App
+Applied Research Fall 2022 Project for Boardwalk Insurance.
 
 # About
-`A platform to replace the classic method of calling and emailing business owners to collect the details and present them to underwriters with a digital platform.`
+Survey builder web application built with ASP.NET 6 & React 18.
 
 # Project Set up:
 
 Steps
-
 - Install [Node.js](https://nodejs.org/en/).
 - You will need to have two terminals. One for the front-end, and another for the back-end.
 
 ## Front-end:
-
 Run the following commands in the terminal:
 
 ```console
-$ cd Client     
+$ cd ReactClient     
 $ npm install
-$ npm run dev
+$ npm start
 ```
 
 ## Back-end:
-
 In the second terminal, run the following commands:
 
 ```console
 $ cd Server
+$ dotnet run
 ```
-
-## Pull Request:
-
