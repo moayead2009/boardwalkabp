@@ -1,4 +1,4 @@
-﻿namespace ApplicationBuildingPlatformAPI.Models.Domain
+﻿namespace ApplicationBuildingPlatformAPI.Models.DTO
 {
     public class TokenInfo
     {

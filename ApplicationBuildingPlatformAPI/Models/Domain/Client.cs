@@ -31,7 +31,7 @@ namespace ApplicationBuildingPlatformAPI.Models.Domain
         [Required]
         [ForeignKey("Appliations")]
         public int ApplicationId { get; set; }
-        public virtual Application Applications { get; set; }
+        public virtual Application? Applications { get; set; }
 
     }
 }

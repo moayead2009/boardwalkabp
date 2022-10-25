@@ -3,6 +3,7 @@ using System;
 using ApplicationBuildingPlatformAPI.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,10 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace ApplicationBuildingPlatformAPI.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    partial class DatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20221025094634_ThirdTimesTheCharm")]
+    partial class ThirdTimesTheCharm
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -274,7 +276,7 @@ namespace ApplicationBuildingPlatformAPI.Migrations
                     b.ToTable("Questions");
                 });
 
-            modelBuilder.Entity("ApplicationBuildingPlatformAPI.Models.DTO.TokenInfo", b =>
+            modelBuilder.Entity("ApplicationBuildingPlatformAPI.Models.Domain.TokenInfo", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
