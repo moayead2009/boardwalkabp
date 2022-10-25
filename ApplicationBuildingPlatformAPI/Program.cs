@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Text;
 using ApplicationBuildingPlatformAPI.Repositories.Contracts;
 using ApplicationBuildingPlatformAPI.Repositories.Domain;
+using ApplicationBuildingPlatformAPI.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 

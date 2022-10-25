@@ -1,4 +1,4 @@
-﻿using ApplicationBuildingPlatformAPI.Models.Domain;
+﻿using ApplicationBuildingPlatformAPI.Data;
 using ApplicationBuildingPlatformAPI.Models.DTO;
 using ApplicationBuildingPlatformAPI.Repositories.Contracts;
 using Microsoft.AspNetCore.Authorization;

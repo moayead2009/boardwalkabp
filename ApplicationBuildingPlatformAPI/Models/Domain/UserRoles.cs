@@ -1,4 +1,4 @@
-﻿namespace ApplicationBuildingPlatformAPI.Models
+﻿namespace ApplicationBuildingPlatformAPI.Models.Domain
 {
     public class UserRoles
     {
