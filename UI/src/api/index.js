@@ -14,22 +14,25 @@ export const createAPIEndpoint = (endpoint) => {
 };
 
 export const ENDPOINTS = {
+  // authemtication
   login: "Auth/Login",
+  registerAdmin: "Auth/RegisterAdmin",
+  registerClient: "Auth/RegisterClient",
+  registerUser: "Auth/RegisterUser",
 
   admins: "admins",
-  registerAdmin: "Auth/RegisterAdmin",
   EditAdmin: "admins/edit",
   DeleteAdmin: "admins/delete",
   ViewAdmin: "admins/view",
 
   clients: "clients",
-  registerClient: "clients/create",
+  createClient: "clients/create",
   EditClient: "clients/edit",
   DeleteClient: "clients/delete",
   ViewClient: "clients/view",
 
   users: "users",
-  registerUser: "Auth/RegisterUser",
+  createUser: "users/create",
   EditUser: "users/edit",
   DeleteUser: "users/delete",
   ViewUser: "users/view",

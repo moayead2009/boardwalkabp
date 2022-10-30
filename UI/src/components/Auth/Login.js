@@ -1,16 +1,10 @@
 import React from "react";
-import {
-  Button,
-  Card,
-  CardContent,
-  TextField,
-  Typography,
-} from "@mui/material";
+import { Button, Card, CardContent, TextField, Typography, } from "@mui/material";
 import { Box } from "@mui/system";
-import Center from "./Center";
-import useForm from "../hooks/useForm";
-import { createAPIEndpoint, ENDPOINTS } from "../api";
-import useStateContext from "../hooks/useStateContext";
+import Center from "../Builder/layout/Center";
+import useForm from "../../hooks/useForm";
+import { createAPIEndpoint, ENDPOINTS } from "../../api";
+import useStateContext from "../../hooks/useStateContext";
 import { useNavigate } from "react-router";
 
 const getFreshModel = () => ({
@@ -19,29 +13,33 @@ const getFreshModel = () => ({
 });
 
 export default function Login() {
-  const { context, setContext } = useStateContext();
+  const { setContext } = useStateContext();
   const { values, errors, setErrors, handleInputChange } =
     useForm(getFreshModel);
   const navigate = useNavigate();
 
-  const login = (e) => {
+  const validate = () => {
+    let temp = {};
+    temp.username = values.username !== "" ? "" : "This field is required.";
+    temp.password = values.password !== "" ? "" : "This field is required.";
+    setErrors(temp);
+    return Object.values(temp).every((x) => x === "");
+  };
+
+  const handleSubmit = (e) => {
     e.preventDefault();
-    // console.log(values);
     if (validate()) {
       try {
         createAPIEndpoint(ENDPOINTS.login)
           .post(values)
           .then((res) => {
             setContext(res.data);
-            // console.log(context);
-
             if (res.data.username !== null) {
-              if (res.data.role === "admin" || res.data.role === "user") {
-                navigate("/home");
+              if (res.data.role === "client") {
+                navigate("/viewer/home");
               } else {
-                navigate("/applications");
+                navigate("/builder/home");
               }
-              navigate("/home");
             }
             if (res.data.username === null) {
               setErrors({
@@ -57,29 +55,6 @@ export default function Login() {
         console.log(err);
       }
     }
-
-    try {
-      createAPIEndpoint(ENDPOINTS.login)
-        .post(values)
-        .then((res) => {
-          console.log(res.data);
-          // setContext(res.data);
-          // navigate('/home')
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const validate = () => {
-    let temp = {};
-    temp.username = values.username !== "" ? "" : "This field is required.";
-    temp.password = values.password !== "" ? "" : "This field is required.";
-    setErrors(temp);
-    return Object.values(temp).every((x) => x === "");
   };
 
   return (
@@ -91,7 +66,7 @@ export default function Login() {
             Application Building Platform
           </Typography>
           <Box sx={{ "& .MuiTextField-root": { m: 1, width: "90%" } }}>
-            <form noValidate autoComplete="off" onSubmit={login}>
+            <form noValidate autoComplete="off" onSubmit={handleSubmit}>
               <TextField
                 label="Username"
                 name="username"

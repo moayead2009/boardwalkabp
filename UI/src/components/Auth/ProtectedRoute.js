@@ -1,5 +1,5 @@
 import React from "react";
-import useStateContext from "../hooks/useStateContext";
+import useStateContext from "../../hooks/useStateContext";
 
 export default function ProtectedRoute() {
   const { context } = useStateContext();

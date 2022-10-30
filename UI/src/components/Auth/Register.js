@@ -1,15 +1,16 @@
 import React from "react";
 import { Button, Card, CardContent, TextField, Typography } from "@mui/material";
 import { Box } from "@mui/system";
-import Center from "./Center";
-import useForm from "../hooks/useForm";
-import { createAPIEndpoint, ENDPOINTS } from '../api'
+import Center from "../Builder/layout/Center";
+import useForm from "../../hooks/useForm";
+import { createAPIEndpoint, ENDPOINTS } from '../../api'
 
 const getFreshModel = () => ({
     name: "",
     username: "",
     email: "",
     password: "",
+    role: "",
   });
 
 export default function Register() {
