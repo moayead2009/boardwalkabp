@@ -15,7 +15,7 @@ Steps
 Run the following commands in the terminal:
 
 ```console
-$ cd ReactClient     
+$ cd ui     
 $ npm install
 $ npm start
 ```
@@ -24,6 +24,6 @@ $ npm start
 In the second terminal, run the following commands:
 
 ```console
-$ cd Server
+$ cd api
 $ dotnet run
 ```
