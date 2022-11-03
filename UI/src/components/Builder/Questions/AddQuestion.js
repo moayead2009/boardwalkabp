@@ -3,42 +3,25 @@ import useStateContext from "../../../hooks/useStateContext";
 import { createAPIEndpoint, ENDPOINTS } from "../../../api";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
-import { useParams } from "react-router-dom";
 import { Card, CardContent, Grid, TextField, Button, Typography } from "@mui/material";
 import { Box } from "@mui/system";
+import { useParams } from "react-router-dom";
 
 export default function AddQuestion() {
-  const { context } = useStateContext();
-  // console.log(context)
-
-  const [clients, setClients] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [search, setSearch] = useState("");
-  const [searchKeyword, setSearchKeyword] = useState("");
-  const [searchResults, setSearchResults] = useState([]);
-  const [page, setPage] = useState(0);
-  const [rowsPerPage, setRowsPerPage] = useState(10);
-  const [total, setTotal] = useState(0);
-  const [error, setError] = useState(null);
-  const [selected, setSelected] = useState([]);
-  const [selectedRow, setSelectedRow] = useState(null);
-  const [errors, setErrors] = useState({});
-  const navigate = useNavigate();
-  const { id } = useParams();
   const [values, setValues] = useState({
     body: "",
     type: "",
-    category: "",
-    conditionId: "",
-    options: [],
   });
+  
+  const [errors, setErrors] = useState({});
+  const navigate = useNavigate();
+  const { id } = useParams();
+  const { state } = useStateContext();
 
   const validate = () => {
     let temp = {};
     temp.body = values.body ? "" : "This field is required.";
     temp.type = values.type ? "" : "This field is required.";
-    temp.category = values.category ? "" : "This field is required.";
-    temp.conditionId = values.conditionId ? "" : "This field is required.";
     setErrors({
       ...temp,
     });
@@ -48,111 +31,100 @@ export default function AddQuestion() {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (validate()) {
-      createAPIEndpoint(ENDPOINTS.questions)
-        .post(values)
-        .then((res) => {
-          console.log(res);
-          navigate("/builder/questions");
-        })
-        .catch((err) => console.log(err));
+      if (id) {
+        createAPIEndpoint(ENDPOINTS.questions)
+          .put(id, values)
+          .then((res) => {
+            navigate("/builder/questions");
+          })
+          .catch((err) => console.log(err));
+      } else {
+        createAPIEndpoint(ENDPOINTS.questions)
+          .post(values)
+          .then((res) => {
+            navigate("/builder/questions");
+          })
+          .catch((err) => console.log(err));
+      }
     }
   };
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setValues({
-      ...values,
-      [name]: value,
-    });
-  };
-
-  const handleOptionChange = (e) => {
-    const { name, value } = e.target;
-    setValues({
-      ...values,
-      options: [
-        ...values.options,
-        {
-          [name]: value,
-        },
-      ],
-    });
-  };
+  useEffect(() => {
+    if (id) {
+      createAPIEndpoint(ENDPOINTS.questions)
+        .fetchById(id)
+        .then((res) => {
+          setValues(res.data);
+        })
+        .catch((err) => console.log(err));
+    }
+  }, [id]);
 
   return (
     <div>
       <br></br>
-      <Card>
-        <CardContent>
-          <Typography variant="h6" gutterBottom>
-            Add Question
-          </Typography>
-          <form onSubmit={handleSubmit}>
+    <Card>
+      <CardContent>
+        <Typography variant="h6" component="div">
+          {id ? "Edit Question" : "Add Question"}
+        </Typography>
+        <Box sx={{ mt: 3 }}>
+          <form autoComplete="off" noValidate onSubmit={handleSubmit}>
             <Grid container spacing={3}>
               <Grid item xs={12}>
                 <TextField
-                  name="body"
+                  fullWidth
                   label="Body"
+                  name="body"
+                  onChange={(e) =>
+                    setValues({
+                      ...values,
+                      body: e.target.value,
+                    })
+                  }{...(errors.body && {
+                    error: true,
+                    helperText: errors.body,
+                  })}
+                  required
                   value={values.body}
-                  onChange={handleInputChange}
-                  error={errors.body}
-                  helperText={errors.body}
-                  fullWidth
+                  variant="outlined"
                 />
               </Grid>
               <Grid item xs={12}>
                 <TextField
-                  name="type"
+                  fullWidth
                   label="Type"
+                  name="type"
+                  onChange={(e) =>
+                    setValues({
+                      ...values,
+                      type: e.target.value,
+                    })
+                  }{...(errors.type && {
+                    error: true,
+                    helperText: errors.type,
+                  })}
+                  required
                   value={values.type}
-                  onChange={handleInputChange}
-                  error={errors.type}
-                  helperText={errors.type}
-                  fullWidth
+                  variant="outlined"
                 />
               </Grid>
               <Grid item xs={12}>
-                <TextField
-                  name="category"
-                  label="Category"
-                  value={values.category}
-                  onChange={handleInputChange}
-                  error={errors.category}
-                  helperText={errors.category}
+                <Button
+                  color="primary"
                   fullWidth
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  name="conditionId"
-                  label="Condition"
-                  value={values.conditionId}
-                  onChange={handleInputChange}
-                  error={errors.conditionId}
-                  helperText={errors.conditionId}
-                  fullWidth
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  name="option"
-                  label="Options"
-                  value={values.option}
-                  onChange={handleOptionChange}
-                  error={errors.option}
-                  helperText={errors.option}
-                  fullWidth
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <Button type="submit" variant="contained">
-                  Submit
+                  size="large"
+                  type="submit"
+                  variant="contained"
+                >
+                  {id ? "Update" : "Save"}
                 </Button>
               </Grid>
             </Grid>
           </form>
-        </CardContent>
-      </Card>
+        </Box>
+      </CardContent>
+    </Card>
     </div>
   );
 }

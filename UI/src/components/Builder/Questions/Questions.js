@@ -3,7 +3,6 @@ import useStateContext from "../../../hooks/useStateContext";
 import { createAPIEndpoint, ENDPOINTS } from "../../../api";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
-import { useParams } from "react-router-dom";
 import { Box } from "@mui/system";
 import { DataGrid } from "@mui/x-data-grid";
 import {
@@ -36,14 +35,6 @@ export default function Questions() {
   const [selectedRow, setSelectedRow] = useState(null);
   const [errors, setErrors] = useState({});
   const navigate = useNavigate();
-  const { id } = useParams();
-  const [values, setValues] = useState({
-    body: "",
-    type: "",
-    category: "",
-    conditionId: "",
-    options: [],
-  });
 
   const fetchQuestions = async () => {
     setLoading(true);
@@ -61,10 +52,9 @@ export default function Questions() {
   }, []);
 
   const columns = [
-    { field: "id", headerName: "ID", width: 90 },
+    // { field: "id", headerName: "ID", width: 90 },
     { field: "body", headerName: "Body", width: 200 },
     { field: "type", headerName: "Type", width: 200 },
-    { field: "conditionId", headerName: "Condition ID", width: 200 },
     // { field: "category", headerName: "Category", width: 200 },
     // { field: "createdAt", headerName: "Created At", width: 200 },
     // { field: "updatedAt", headerName: "Updated At", width: 200 },

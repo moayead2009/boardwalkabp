@@ -1,6 +1,7 @@
 import axios from "axios";
 
-export const BASE_URL = "https://localhost:7178/";
+export const BASE_URL = "https://localhost:7022/";
+
 
 export const createAPIEndpoint = (endpoint) => {
   let url = BASE_URL + "api/" + endpoint + "/";
@@ -14,44 +15,35 @@ export const createAPIEndpoint = (endpoint) => {
 };
 
 export const ENDPOINTS = {
-  // authemtication
-  login: "Auth/Login",
-  registerAdmin: "Auth/RegisterAdmin",
-  registerClient: "Auth/RegisterClient",
-  registerUser: "Auth/RegisterUser",
-
-  admins: "admins",
-  EditAdmin: "admins/edit",
-  DeleteAdmin: "admins/delete",
-  ViewAdmin: "admins/view",
-
   clients: "clients",
-  createClient: "clients/create",
+  registerClient: "clients/register",
+  loginClient: "clients/login",
   EditClient: "clients/edit",
   DeleteClient: "clients/delete",
   ViewClient: "clients/view",
 
   users: "users",
-  createUser: "users/create",
+  registerUser: "users/register",
+  loginUser: "users/login",
   EditUser: "users/edit",
   DeleteUser: "users/delete",
   ViewUser: "users/view",
 
   categories: "categories",
+  createCategory: "categories/create",
   editCategory: "categories/edit",
   deleteCategory: "categories/delete",
   viewCategory: "categories/view",
-  createCategory: "categories/create",
 
   applications: "applications",
+  createApplication: "applications/create",
   editApplication: "applications/edit",
   deleteApplication: "applications/delete",
   viewApplication: "applications/view",
-  createApplication: "applications/create",
 
   questions: "questions",
+  createQuestion: "questions/create",
   editQuestion: "questions/edit",
   deleteQuestion: "questions/delete",
   viewQuestion: "questions/view",
-  createQuestion: "questions/create",
 };
