@@ -1,29 +1,31 @@
-{
-  "profiles": {
-    "ApplicationBuildingPlatformAPI": {
-      "commandName": "Project",
-      "launchUrl": "weatherforecast",
-      "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
-      },
-      "dotnetRunMessages": true,
-      "applicationUrl": "https://localhost:7178;http://localhost:5178"
-    },
-    "IIS Express": {
-      "commandName": "IISExpress",
-      "launchUrl": "weatherforecast",
-      "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
-      }
-    }
-  },
+﻿{
   "$schema": "https://json.schemastore.org/launchsettings.json",
   "iisSettings": {
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://localhost:39450",
-      "sslPort": 44358
+      "applicationUrl": "http://localhost:5863",
+      "sslPort": 44307
+    }
+  },
+  "profiles": {
+    "API": {
+      "commandName": "Project",
+      "dotnetRunMessages": true,
+      "launchBrowser": false,
+      "launchUrl": "api",
+      "applicationUrl": "https://localhost:7022;http://localhost:5022",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    },
+    "IIS Express": {
+      "commandName": "IISExpress",
+      "launchBrowser": true,
+      "launchUrl": "api",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
     }
   }
 }

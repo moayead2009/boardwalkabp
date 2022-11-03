@@ -33,14 +33,7 @@ export default function Applications() {
   const [error, setError] = useState(null);
   const [selected, setSelected] = useState([]);
   const [selectedRow, setSelectedRow] = useState(null);
-  const [values, setValues] = useState({
-    title: "",
-    slug: "",
-    category: "",
-    conditionId: "",
-    // questions: [],
-    // status: "",
-  });
+
 
   const fetchApplications = async () => {
     createAPIEndpoint(ENDPOINTS.applications)
@@ -56,37 +49,25 @@ export default function Applications() {
   }, []);
 
   const columns = [
-    { field: "id", headerName: "ID", width: 90 },
+    // { field: "id", headerName: "ID", width: 90 },
     {
       field: "title",
       headerName: "Title",
-      width: 150,
+      width: 200,
       editable: true,
     },
-    // {
-    //   field: "slug",
-    //   headerName: "Slug",
-    //   width: 150,
-    //   editable: true,
-    // },
-    // {
-    //   field: "conditionId",
-    //   headerName: "Condition ID",
-    //   width: 150,
-    //   editable: true,
-    // },
     {
       field: "createdAt",
       headerName: "Created At",
       width: 150,
       editable: true,
     },
-    {
-      field: "updatedAt",
-      headerName: "Updated At",
-      width: 150,
-      editable: true,
-    },
+    // {
+    //   field: "updatedAt",
+    //   headerName: "Updated At",
+    //   width: 150,
+    //   editable: true,
+    // },
     {
       field: "actions",
       headerName: "Actions",

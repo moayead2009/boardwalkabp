@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using ApplicationBuildingPlatformAPI.Models.Domain;
-using ApplicationBuildingPlatformAPI.Data;
+using API.Models.Domain;
+using Data.Contexts;
 
-namespace ApplicationBuildingPlatform.Controllers
+namespace API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -30,7 +25,7 @@ namespace ApplicationBuildingPlatform.Controllers
 
         // GET: api/Applications/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Application>> GetApplication(int id)
+        public async Task<ActionResult<Application>> GetApplication(Guid id)
         {
             var application = await _context.Applications.FindAsync(id);
 
@@ -43,9 +38,8 @@ namespace ApplicationBuildingPlatform.Controllers
         }
 
         // PUT: api/Applications/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutApplication(int id, Application application)
+        public async Task<IActionResult> PutApplication(Guid id, Application application)
         {
             if (id != application.Id)
             {
@@ -74,7 +68,6 @@ namespace ApplicationBuildingPlatform.Controllers
         }
 
         // POST: api/Applications
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
         public async Task<ActionResult<Application>> PostApplication(Application application)
         {
@@ -86,7 +79,7 @@ namespace ApplicationBuildingPlatform.Controllers
 
         // DELETE: api/Applications/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteApplication(int id)
+        public async Task<IActionResult> DeleteApplication(Guid id)
         {
             var application = await _context.Applications.FindAsync(id);
             if (application == null)
@@ -100,7 +93,7 @@ namespace ApplicationBuildingPlatform.Controllers
             return NoContent();
         }
 
-        private bool ApplicationExists(int id)
+        private bool ApplicationExists(Guid id)
         {
             return _context.Applications.Any(e => e.Id == id);
         }

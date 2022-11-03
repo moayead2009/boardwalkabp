@@ -5,10 +5,11 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using ApplicationBuildingPlatformAPI.Models.Domain;
-using ApplicationBuildingPlatformAPI.Data;
+using API;
+using Data.Contexts;
+using API.Models.Domain;
 
-namespace ApplicationBuildingPlatform.Controllers
+namespace API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -30,7 +31,7 @@ namespace ApplicationBuildingPlatform.Controllers
 
         // GET: api/Categories/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Category>> GetCategory(int id)
+        public async Task<ActionResult<Category>> GetCategory(Guid id)
         {
             var category = await _context.Categories.FindAsync(id);
 
@@ -43,9 +44,8 @@ namespace ApplicationBuildingPlatform.Controllers
         }
 
         // PUT: api/Categories/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutCategory(int id, Category category)
+        public async Task<IActionResult> PutCategory(Guid id, Category category)
         {
             if (id != category.Id)
             {
@@ -74,7 +74,6 @@ namespace ApplicationBuildingPlatform.Controllers
         }
 
         // POST: api/Categories
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
         public async Task<ActionResult<Category>> PostCategory(Category category)
         {
@@ -86,7 +85,7 @@ namespace ApplicationBuildingPlatform.Controllers
 
         // DELETE: api/Categories/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteCategory(int id)
+        public async Task<IActionResult> DeleteCategory(Guid id)
         {
             var category = await _context.Categories.FindAsync(id);
             if (category == null)
@@ -100,7 +99,7 @@ namespace ApplicationBuildingPlatform.Controllers
             return NoContent();
         }
 
-        private bool CategoryExists(int id)
+        private bool CategoryExists(Guid id)
         {
             return _context.Categories.Any(e => e.Id == id);
         }

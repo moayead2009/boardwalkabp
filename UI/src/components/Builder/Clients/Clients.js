@@ -27,16 +27,6 @@ export default function Clients() {
   const [selectedRow, setSelectedRow] = useState(null);
   const [errors, setErrors] = useState({});
   const navigate = useNavigate();
-  const { id } = useParams();
-  const [values, setValues] = useState({
-    name: "",
-    username: "",
-    email: "",
-    password: "",
-    phoneNumber: "",
-    address: "",
-    applicationId: "",
-  });
 
   const fetchClients = async () => {
     setLoading(true);
@@ -54,13 +44,13 @@ export default function Clients() {
   }, []);
 
   const columns = [
-    { field: "id", headerName: "ID", width: 90 },
+    // { field: "id", headerName: "ID", width: 90 },
     { field: "name", headerName: "Name", width: 200 },
-    { field: "userName", headerName: "Username", width: 200 },
+    // { field: "username", headerName: "Username", width: 200 },
     { field: "email", headerName: "Email", width: 200 },
-    { field: "phoneNumber", headerName: "Phone Number", width: 200 },
+    // { field: "phoneNumber", headerName: "Phone Number", width: 200 },
     { field: "address", headerName: "Address", width: 200 },
-    { field: "applicationId", headerName: "Application ID", width: 200 },
+    // { field: "applicationId", headerName: "Application ID", width: 200 },
     {
       field: "actions",
       headerName: "Actions",

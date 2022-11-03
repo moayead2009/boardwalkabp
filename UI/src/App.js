@@ -1,7 +1,11 @@
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Login from "./components/Auth/Login";
-import Register from "./components/Auth/Register";
+
+// Auth routes
+import UserLogin from "./components/Builder/Users/UserLogin";
+import UserRegister from "./components/Builder/Users/UserRegister";
+import ClientRegister from "./components/Builder/Clients/ClientRegister";
+import ClientLogin from "./components/Builder/Clients/ClientLogin";
 
 // Builder routes
 import BuilderHome from "./components/Builder/Home";
@@ -17,9 +21,9 @@ import EditCategory from "./components/Builder/Categories/EditCategory";
 import ViewCategory from "./components/Builder/Categories/ViewCategory";
 import DeleteCategory from "./components/Builder/Categories/DeleteCategory";
 import Clients from "./components/Builder/Clients/Clients";
-import AddClient from "./components/Builder/Clients/AddClient";
 import EditClient from "./components/Builder/Clients/EditClient";
 import ViewClient from "./components/Builder/Clients/ViewClient";
+import DeleteClient from "./components/Builder/Clients/DeleteClient";
 import Questions from "./components/Builder/Questions/Questions";
 import ViewQuestion from "./components/Builder/Questions/ViewQuestion";
 import AddQuestion from "./components/Builder/Questions/AddQuestion";
@@ -36,9 +40,11 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/register" exact element={<Register />} />
-        <Route path="/" exact element={<Login />} />
-        {/* <Route path="*" exact element={<h1>404 Not Found</h1>} /> */}
+        <Route path="/register" exact element={<UserRegister />} />
+        <Route path="/" exact element={<UserLogin />} />
+        <Route path="/clientRegister" exact element={<ClientRegister />} />
+        <Route path="/clientLogin" exact element={<ClientLogin />} />
+        <Route path="*" exact element={<h1>404 Not Found</h1>} />
 
         {/* Builder routes */}
         <Route path="/builder" exact element={<BuilderLayout />}>
@@ -93,7 +99,11 @@ function App() {
           />
 
           <Route path="/builder/clients" exact element={<Clients />} />
-          <Route path="/builder/clients/add" exact element={<AddClient />} />
+          <Route
+            path="/builder/clients/add"
+            exact
+            element={<ClientRegister />}
+          />
           <Route
             path="/builder/clients/edit/:id"
             exact
@@ -103,6 +113,11 @@ function App() {
             path="/builder/clients/view/:id"
             exact
             element={<ViewClient />}
+          />
+          <Route
+            path="/builder/clients/delete/:id"
+            exact
+            element={<DeleteClient />}
           />
 
           <Route path="/builder/questions" exact element={<Questions />} />
@@ -129,10 +144,14 @@ function App() {
         </Route>
 
         {/* Viewer routes */}
-        <Route path="/" exact element = {<ViewerLayout />}>
+        <Route path="/" exact element={<ViewerLayout />}>
           <Route path="/viewer/home" exact element={<ViewerHome />} />
-        <Route path="/viewer/application/:id" exact element={<Application />} />
-        <Route path="/viewer/profile" exact element={<Profile />} />
+          <Route
+            path="/viewer/application/:id"
+            exact
+            element={<Application />}
+          />
+          <Route path="/viewer/profile" exact element={<Profile />} />
         </Route>
       </Routes>
     </BrowserRouter>

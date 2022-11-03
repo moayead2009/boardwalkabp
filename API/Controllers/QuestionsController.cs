@@ -5,10 +5,10 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using ApplicationBuildingPlatformAPI.Models.Domain;
-using ApplicationBuildingPlatformAPI.Data;
+using Data.Contexts;
+using API.Models.Domain;
 
-namespace ApplicationBuildingPlatform.Controllers
+namespace API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -30,7 +30,7 @@ namespace ApplicationBuildingPlatform.Controllers
 
         // GET: api/Questions/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Question>> GetQuestion(int id)
+        public async Task<ActionResult<Question>> GetQuestion(Guid id)
         {
             var question = await _context.Questions.FindAsync(id);
 
@@ -45,7 +45,7 @@ namespace ApplicationBuildingPlatform.Controllers
         // PUT: api/Questions/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutQuestion(int id, Question question)
+        public async Task<IActionResult> PutQuestion(Guid id, Question question)
         {
             if (id != question.Id)
             {
@@ -74,7 +74,6 @@ namespace ApplicationBuildingPlatform.Controllers
         }
 
         // POST: api/Questions
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
         public async Task<ActionResult<Question>> PostQuestion(Question question)
         {
@@ -86,7 +85,7 @@ namespace ApplicationBuildingPlatform.Controllers
 
         // DELETE: api/Questions/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteQuestion(int id)
+        public async Task<IActionResult> DeleteQuestion(Guid id)
         {
             var question = await _context.Questions.FindAsync(id);
             if (question == null)
@@ -100,7 +99,7 @@ namespace ApplicationBuildingPlatform.Controllers
             return NoContent();
         }
 
-        private bool QuestionExists(int id)
+        private bool QuestionExists(Guid id)
         {
             return _context.Questions.Any(e => e.Id == id);
         }
