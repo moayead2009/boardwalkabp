@@ -73,7 +73,7 @@ export default function UserLogin() {
           <Grid container spacing={2}>
             <Grid item xs={12}>
             <Typography variant="h3" sx={{ my: 3 }}>
-                Application Buildeing Platform
+                Application Building Platform
               </Typography>
             </Grid>
             <Grid item xs={12}>

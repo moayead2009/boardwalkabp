@@ -33,7 +33,7 @@ import DeleteQuestion from "./components/Builder/Questions/DeleteQuestion";
 // Viewer routes
 import ViewerHome from "./components/Viewer/Home";
 import ViewerLayout from "./components/Viewer/layout/ViewerLayout";
-import Application from "./components/Viewer/Application";
+import ClientApplications from "./components/Viewer/ClientApplications";
 import Profile from "./components/Viewer/Profile";
 
 function App() {
@@ -147,9 +147,9 @@ function App() {
         <Route path="/" exact element={<ViewerLayout />}>
           <Route path="/viewer/home" exact element={<ViewerHome />} />
           <Route
-            path="/viewer/application/:id"
+            path="/viewer/applications/:id"
             exact
-            element={<Application />}
+            element={<ClientApplications />}
           />
           <Route path="/viewer/profile" exact element={<Profile />} />
         </Route>
