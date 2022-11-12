@@ -1,6 +1,6 @@
 import React from "react";
 import { createAPIEndpoint, ENDPOINTS } from "../../../api";
-import Center from "../layout/Center";
+import Center from "../../layout/Center";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import {
@@ -203,6 +203,7 @@ export default function UserRegister() {
                   color="primary"
                   fullWidth
                   type="submit"
+                  style={{ backgroundColor: '#FF7753' }}
                 >
                   Register
                 </Button>

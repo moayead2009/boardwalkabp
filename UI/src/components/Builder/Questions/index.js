@@ -3,27 +3,18 @@ import useStateContext from "../../../hooks/useStateContext";
 import { createAPIEndpoint, ENDPOINTS } from "../../../api";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
-import { useParams } from "react-router-dom";
 import { Box } from "@mui/system";
 import { DataGrid } from "@mui/x-data-grid";
-import {
-  Card,
-  CardContent,
-  Grid,
-  TextField,
-  Button,
-  Typography,
-  IconButton,
-} from "@mui/material";
+import { Card, CardContent, CardHeader, Grid, TextField, Button, IconButton } from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 
-export default function Categories() {
+export default function Questions() {
   const { context } = useStateContext();
   // console.log(context);
 
-  const [categories, setCategories] = useState([]);
+  const [questions, setQuestions] = useState([]);
   const [loading, setLoading] = useState(false);
   const [search, setSearch] = useState("");
   const [searchKeyword, setSearchKeyword] = useState("");
@@ -37,25 +28,27 @@ export default function Categories() {
   const [errors, setErrors] = useState({});
   const navigate = useNavigate();
 
-  const fetchCategories = async () => {
+  const fetchQuestions = async () => {
     setLoading(true);
-    createAPIEndpoint(ENDPOINTS.categories)
+    createAPIEndpoint(ENDPOINTS.questions)
       .fetch()
       .then((res) => {
-        setCategories(res.data);
+        setQuestions(res.data);
         setLoading(false);
       })
       .catch((err) => console.log(err));
   };
 
   useEffect(() => {
-    fetchCategories();
+    fetchQuestions();
   }, []);
 
   const columns = [
     // { field: "id", headerName: "ID", width: 90 },
-    { field: "name", headerName: "Name", width: 200 },
-    { field: "createdAt", headerName: "Created At", width: 200 },
+    { field: "body", headerName: "Body", width: 200 },
+    { field: "type", headerName: "Type", width: 200 },
+    // { field: "category", headerName: "Category", width: 200 },
+    // { field: "createdAt", headerName: "Created At", width: 200 },
     // { field: "updatedAt", headerName: "Updated At", width: 200 },
     {
       field: "actions",
@@ -64,25 +57,21 @@ export default function Categories() {
       renderCell: (params) => (
         <div>
           <IconButton
-            onClick={() =>
-              navigate(`/builder/categories/view/${params.row.id}`)
-            }
+            onClick={() => navigate(`/builder/questions/view/${params.row.id}`)}
           >
             <VisibilityIcon color="primary" />
           </IconButton>
           <IconButton
-            onClick={() =>
-              navigate(`/builder/categories/edit/${params.row.id}`)
-            }
+            onClick={() => navigate(`/builder/questions/edit/${params.row.id}`)}
           >
             <EditIcon color="primary" />
           </IconButton>
           <IconButton
             onClick={() =>
-              navigate(`/builder/categories/delete/${params.row.id}`)
+              navigate(`/builder/questions/delete/${params.row.id}`)
             }
           >
-            <DeleteIcon color="error" />
+             <DeleteIcon color="primary"/>
           </IconButton>
         </div>
       ),
@@ -99,14 +88,14 @@ export default function Categories() {
 
   useEffect(() => {
     if (searchKeyword !== "") {
-      const results = categories.filter((category) =>
-        category.name.toLowerCase().includes(searchKeyword)
+      const results = questions.filter((question) =>
+        question.body.toLowerCase().includes(searchKeyword)
       );
       setSearchResults(results);
     } else {
-      setSearchResults(categories);
+      setSearchResults(questions);
     }
-  }, [searchKeyword, categories]);
+  }, [searchKeyword, questions]);
 
   const handlePageChange = (params) => {
     setPage(params.page);
@@ -116,25 +105,24 @@ export default function Categories() {
     setRowsPerPage(params.pageSize);
   };
 
-  const handleSelect = (params) => {
+  const handleSelectionChange = (params) => {
     setSelected(params.rowIds);
+  };
+
+  const handleRowClick = (params) => {
     setSelectedRow(params.row);
   };
 
   const handleAdd = () => {
-    navigate("/builder/categories/add");
+    navigate("/builder/questions/add");
   };
 
   return (
-    <div>
-      <br></br>
       <Card>
+        <CardHeader title="Questions" />
         <CardContent>
           <Grid container spacing={2}>
             <Grid item xs={12}>
-              <Typography variant="h4" sx={{ mb: 2 }}>
-                Categories
-              </Typography>
               <Box sx={{ display: "flex" }}>
                 <TextField
                   fullWidth
@@ -157,28 +145,28 @@ export default function Categories() {
                   onClick={handleAdd}
                   sx={{ ml: 2 }}
                 >
-                  Add New Category
+                  Add New Question
                 </Button>
               </Box>
             </Grid>
             <Grid item xs={12}>
               <div style={{ height: 400, width: "100%" }}>
                 <DataGrid
-                  rows={searchKeyword !== "" ? searchResults : categories}
+                  rows={searchKeyword !== "" ? searchResults : questions}
                   columns={columns}
                   pageSize={rowsPerPage}
                   rowsPerPageOptions={[5, 10, 20]}
                   checkboxSelection
                   disableSelectionOnClick
-                  onSelectionModelChange={handleSelect}
-                  onPageSizeChange={handleRowsPerPageChange}
+                  onSelectionModelChange={handleSelectionChange}
+                  onRowClick={handleRowClick}
                   onPageChange={handlePageChange}
+                  onRowsPerPageChange={handleRowsPerPageChange}
                 />
               </div>
             </Grid>
           </Grid>
         </CardContent>
       </Card>
-    </div>
   );
 }

@@ -1,9 +1,11 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Xml.Linq;
 
 namespace API.Models.Domain
 {
+    [Table("users")]
     public class User
     {
         public Guid Id { get; set; }

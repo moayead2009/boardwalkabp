@@ -35,8 +35,6 @@ export default function DeleteQuestion() {
   };
 
   return (
-    <div>
-      <br></br>
       <Card>
         <CardContent>
           <Grid container spacing={2}>
@@ -63,6 +61,5 @@ export default function DeleteQuestion() {
           </Grid>
         </CardContent>
       </Card>
-    </div>
   );
 }

@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace API.Models.Domain
 {
+    [Table("clients")]
     public class Client
     {
         public Guid Id { get; set; }

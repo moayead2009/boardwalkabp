@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace API.Models.Domain
 {
+    [Table("categories")]
     public class Category
     {
         public Guid Id { get; set; }

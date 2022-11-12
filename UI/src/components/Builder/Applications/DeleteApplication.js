@@ -40,8 +40,6 @@ export default function DeleteApplication() {
   };
 
   return (
-    <div>
-      <br></br>
     <Card>
       <CardContent>
         <Grid container spacing={2}>
@@ -68,6 +66,5 @@ export default function DeleteApplication() {
         </Grid>
       </CardContent>
     </Card>
-    </div>
   );
 }

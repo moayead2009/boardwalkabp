@@ -10,7 +10,6 @@ import {
   Button,
   Typography,
 } from "@mui/material";
-import { Box } from "@mui/system";
 
 export default function ViewClient() {
   const [client, setClient] = useState({});
@@ -31,8 +30,6 @@ export default function ViewClient() {
   }, []);
 
   return (
-    <div>
-      <br></br>
       <Card>
         <CardContent>
           <Grid container spacing={2}>
@@ -84,6 +81,5 @@ export default function ViewClient() {
           </Grid>
         </CardContent>
       </Card>
-    </div>
   )
 }

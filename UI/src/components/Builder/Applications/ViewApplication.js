@@ -30,8 +30,6 @@ export default function ViewApplication() {
   }, []);
 
   return (
-    <div>
-      <br></br>
     <Card>
       <CardContent>
         <Grid container spacing={2}>
@@ -68,6 +66,5 @@ export default function ViewApplication() {
         </Grid>
       </CardContent>
     </Card>
-    </div>
   );
 }

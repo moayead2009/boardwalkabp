@@ -46,4 +46,7 @@ export const ENDPOINTS = {
   editQuestion: "questions/edit",
   deleteQuestion: "questions/delete",
   viewQuestion: "questions/view",
+
+  // clientProfile: "clientProfile",
+  // clinetApplication: "clientApplication",
 };

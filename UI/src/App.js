@@ -2,39 +2,39 @@ import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 // Auth routes
-import UserLogin from "./components/Builder/Users/UserLogin";
-import UserRegister from "./components/Builder/Users/UserRegister";
-import ClientRegister from "./components/Builder/Clients/ClientRegister";
-import ClientLogin from "./components/Builder/Clients/ClientLogin";
+import UserLogin from "./components/builder/users/UserLogin";
+import UserRegister from "./components/builder/users/UserRegister";
+import ClientRegister from "./components/builder/clients/ClientRegister";
+import ClientLogin from "./components/builder/clients/ClientLogin";
 
 // Builder routes
-import BuilderHome from "./components/Builder/Home";
-import BuilderLayout from "./components/Builder/layout/BuilderLayout";
-import Applications from "./components/Builder/Applications/Applications";
-import AddApplication from "./components/Builder/Applications/AddApplication";
-import ViewApplication from "./components/Builder/Applications/ViewApplication";
-import EditApplication from "./components/Builder/Applications/EditApplication";
-import DeleteApplication from "./components/Builder/Applications/DeleteApplication";
-import Categories from "./components/Builder/Categories/Categories";
-import AddCategory from "./components/Builder/Categories/AddCategory";
-import EditCategory from "./components/Builder/Categories/EditCategory";
-import ViewCategory from "./components/Builder/Categories/ViewCategory";
-import DeleteCategory from "./components/Builder/Categories/DeleteCategory";
-import Clients from "./components/Builder/Clients/Clients";
-import EditClient from "./components/Builder/Clients/EditClient";
-import ViewClient from "./components/Builder/Clients/ViewClient";
-import DeleteClient from "./components/Builder/Clients/DeleteClient";
-import Questions from "./components/Builder/Questions/Questions";
-import ViewQuestion from "./components/Builder/Questions/ViewQuestion";
-import AddQuestion from "./components/Builder/Questions/AddQuestion";
-import EditQuestion from "./components/Builder/Questions/EditQuestion";
-import DeleteQuestion from "./components/Builder/Questions/DeleteQuestion";
+import BuilderHome from "./components/layout/BuilderHome";
+import BuilderLayout from "./components/layout/BuilderLayout";
+import Applications from "./components/builder/applications/index";
+import AddApplication from "./components/builder/applications/AddApplication";
+import ViewApplication from "./components/builder/applications/ViewApplication";
+import EditApplication from "./components/builder/applications/EditApplication";
+import DeleteApplication from "./components/builder/applications/DeleteApplication";
+import Categories from "./components/builder/categories/index";
+import AddCategory from "./components/builder/categories/AddCategory";
+import EditCategory from "./components/builder/categories/EditCategory";
+import ViewCategory from "./components/builder/categories/ViewCategory";
+import DeleteCategory from "./components/builder/categories/DeleteCategory";
+import Clients from "./components/builder/clients";
+import EditClient from "./components/builder/clients/EditClient";
+import ViewClient from "./components/builder/clients/ViewClient";
+import DeleteClient from "./components/builder/clients/DeleteClient";
+import Questions from "./components/builder/questions";
+import ViewQuestion from "./components/builder/questions/ViewQuestion";
+import AddQuestion from "./components/builder/questions/AddQuestion";
+import EditQuestion from "./components/builder/questions/EditQuestion";
+import DeleteQuestion from "./components/builder/questions/DeleteQuestion";
 
 // Viewer routes
-import ViewerHome from "./components/Viewer/Home";
-import ViewerLayout from "./components/Viewer/layout/ViewerLayout";
-import ClientApplications from "./components/Viewer/ClientApplications";
-import Profile from "./components/Viewer/Profile";
+import ViewerHome from "./components/layout/ViewerHome";
+import ViewerLayout from "./components/layout/ViewerLayout";
+import ClientApplications from "./components/viewer/Applications";
+import Profile from "./components/viewer/Profile";
 
 function App() {
   return (
@@ -42,8 +42,7 @@ function App() {
       <Routes>
         <Route path="/register" exact element={<UserRegister />} />
         <Route path="/" exact element={<UserLogin />} />
-        <Route path="/clientRegister" exact element={<ClientRegister />} />
-        <Route path="/clientLogin" exact element={<ClientLogin />} />
+        <Route path="/viewer/login" exact element={<ClientLogin />} />
         <Route path="*" exact element={<h1>404 Not Found</h1>} />
 
         {/* Builder routes */}
@@ -147,7 +146,7 @@ function App() {
         <Route path="/" exact element={<ViewerLayout />}>
           <Route path="/viewer/home" exact element={<ViewerHome />} />
           <Route
-            path="/viewer/applications/:id"
+            path="/viewer/applications"
             exact
             element={<ClientApplications />}
           />

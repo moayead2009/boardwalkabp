@@ -61,8 +61,6 @@ export default function AddQuestion() {
   }, [id]);
 
   return (
-    <div>
-      <br></br>
     <Card>
       <CardContent>
         <Typography variant="h6" component="div">
@@ -125,6 +123,5 @@ export default function AddQuestion() {
         </Box>
       </CardContent>
     </Card>
-    </div>
   );
 }

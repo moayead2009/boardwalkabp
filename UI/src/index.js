@@ -7,9 +7,9 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { CssBaseline } from '@mui/material/';
 import { ContextProvider } from './hooks/useStateContext';
 
-const darkTheme = createTheme({
+const abpTheme = createTheme({
   palette: {
-    mode: 'dark',
+    mode: 'light',
   },
   typography:{
     // fontFamily:'"IBM Plex Sans"'
@@ -20,7 +20,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <ContextProvider>
-      <ThemeProvider theme={darkTheme}>
+      <ThemeProvider theme={abpTheme}>
         <CssBaseline />
         <App />
       </ThemeProvider>

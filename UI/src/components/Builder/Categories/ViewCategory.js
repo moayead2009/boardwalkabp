@@ -31,8 +31,6 @@ export default function ViewCategory() {
   }, []);
 
   return (
-    <div>
-      <br></br>
     <Card>
       <CardContent>
         <Grid container spacing={2}>
@@ -64,6 +62,5 @@ export default function ViewCategory() {
         </Grid>
       </CardContent>
     </Card>
-    </div>
   )
 }
