@@ -41,8 +41,6 @@ export default function DeleteCategory() {
   };
 
   return (
-    <div>
-      <br></br>
     <Card>
       <CardContent>
         <Grid container spacing={2}>
@@ -69,6 +67,5 @@ export default function DeleteCategory() {
         </Grid>
       </CardContent>
     </Card>
-    </div>
   )
 }

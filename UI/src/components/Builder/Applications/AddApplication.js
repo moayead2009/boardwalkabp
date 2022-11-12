@@ -63,8 +63,6 @@ export default function AddApplication() {
   }, [id]);
 
   return (
-    <div>
-      <br></br>
       <Card>
         <CardContent>
           <Typography variant="h6" component="div">
@@ -107,6 +105,5 @@ export default function AddApplication() {
           </form>
         </CardContent>
       </Card>
-    </div>
   );
 }

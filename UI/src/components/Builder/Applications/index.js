@@ -6,15 +6,7 @@ import { useNavigate } from "react-router";
 import { useParams } from "react-router-dom";
 import { Box } from "@mui/system";
 import { DataGrid } from "@mui/x-data-grid";
-import {
-  Card,
-  CardContent,
-  Grid,
-  TextField,
-  Button,
-  Typography,
-  IconButton,
-} from "@mui/material";
+import { Card, CardContent, CardHeader, Grid, TextField, Button, IconButton } from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import VisibilityIcon from "@mui/icons-material/Visibility";
@@ -33,7 +25,6 @@ export default function Applications() {
   const [error, setError] = useState(null);
   const [selected, setSelected] = useState([]);
   const [selectedRow, setSelectedRow] = useState(null);
-
 
   const fetchApplications = async () => {
     createAPIEndpoint(ENDPOINTS.applications)
@@ -96,7 +87,7 @@ export default function Applications() {
               navigate(`/builder/applications/delete/${params.row.id}`);
             }}
           >
-            <DeleteIcon color="error" />
+            <DeleteIcon color="primary" />
           </IconButton>
         </div>
       ),
@@ -154,15 +145,12 @@ export default function Applications() {
 
   return (
     <div>
-      <br></br>
       <Box sx={{ width: "100%" }}>
         <Card>
+        <CardHeader title="Applications" />
           <CardContent>
             <Grid container spacing={3}>
               <Grid item xs={12}>
-                <Typography variant="h4" sx={{ mb: 2 }}>
-                  Applications
-                </Typography>
                 <Box sx={{ display: "flex" }}>
                   <TextField
                     fullWidth
@@ -189,28 +177,24 @@ export default function Applications() {
                   </Button>
                 </Box>
               </Grid>
+              <Grid item xs={12}>
+                <div style={{ height: 400, width: "100%" }}>
+                  <DataGrid
+                    rows={searchKeyword !== "" ? searchResults : applications}
+                    columns={columns}
+                    pageSize={rowsPerPage}
+                    rowsPerPageOptions={[5, 10, 25]}
+                    checkboxSelection
+                    disableSelectionOnClick
+                    onSelectionModelChange={handleSelectionChange}
+                    onRowClick={handleRowClick}
+                    onPageSizeChange={handleRowsPerPageChange}
+                    onPageChange={handlePageChange}
+                    onSearchClear={handleSearchClear}
+                  />
+                </div>
+              </Grid>
             </Grid>
-          </CardContent>
-        </Card>
-      </Box>
-      <Box sx={{ width: "100%" }}>
-        <Card>
-          <CardContent>
-            <div style={{ height: 400, width: "100%" }}>
-              <DataGrid
-                rows={searchKeyword !== "" ? searchResults : applications}
-                columns={columns}
-                pageSize={rowsPerPage}
-                rowsPerPageOptions={[5, 10, 25]}
-                checkboxSelection
-                disableSelectionOnClick
-                onSelectionModelChange={handleSelectionChange}
-                onRowClick={handleRowClick}
-                onPageSizeChange={handleRowsPerPageChange}
-                onPageChange={handlePageChange}
-                onSearchClear={handleSearchClear}
-              />
-            </div>
           </CardContent>
         </Card>
       </Box>

@@ -50,8 +50,6 @@ export default function EditCategory() {
   };
 
   return (
-    <div>
-      <br></br>
       <Card>
         <CardContent>
           <Grid container spacing={2}>
@@ -81,6 +79,5 @@ export default function EditCategory() {
           </Grid>
         </CardContent>
       </Card>
-    </div>
   )
 }

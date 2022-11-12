@@ -1,7 +1,7 @@
 import React from 'react'
 import useStateContext from "../../../hooks/useStateContext";
 import { createAPIEndpoint, ENDPOINTS } from "../../../api";
-import Center from "../../Builder/layout/Center";
+import Center from "../../layout/Center";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import { useParams } from "react-router-dom";
@@ -167,6 +167,7 @@ export default function UserRegister() {
                   size="large"
                   type="submit"
                   variant="contained"
+                  style={{ backgroundColor: '#FF7753' }}
                 >
                   Register
                 </Button>

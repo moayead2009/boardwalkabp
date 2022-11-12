@@ -51,8 +51,6 @@ export default function EditApplication() {
 
 
   return (
-    <div>
-      <br></br>
     <Card>
       <CardContent>
         <Grid container spacing={2}>
@@ -83,6 +81,5 @@ export default function EditApplication() {
           </Grid>
       </CardContent>
     </Card>
-    </div>
   );
 }

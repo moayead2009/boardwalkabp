@@ -3,9 +3,8 @@ import useStateContext from "../../../hooks/useStateContext";
 import { createAPIEndpoint, ENDPOINTS } from "../../../api";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
-import { useParams } from "react-router-dom";
 import { Box } from "@mui/system";
-import { Card, CardContent, Grid, TextField, Button, Typography, IconButton } from "@mui/material";
+import { Card, CardContent, CardHeader, Grid, TextField, Button, IconButton } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
@@ -64,7 +63,7 @@ export default function Clients() {
             <EditIcon color="primary" />
           </IconButton>
           <IconButton onClick={() => navigate(`/builder/clients/delete/${params.row.id}`)}>
-            <DeleteIcon color="error" />
+          <DeleteIcon color="primary"/>
           </IconButton>
         </div>
       ),
@@ -113,13 +112,12 @@ export default function Clients() {
 
   return (
     <div>
-      <br></br>
       <Box sx={{ width: "100%" }}>
         <Card>
+          <CardHeader title="Clients" />
           <CardContent>
             <Grid container spacing={3}>
               <Grid item xs={12}>
-                <Typography variant="h4" sx={{ mb: 2 }} >Clients</Typography>
                 <Box sx={{ display: "flex" }}>
                   <TextField
                     fullWidth
@@ -146,14 +144,6 @@ export default function Clients() {
                   </Button>
                 </Box>
               </Grid>
-            </Grid>
-          </CardContent>
-        </Card>
-      </Box>
-      <Box sx={{ width: "100%" }}>
-        <Card>
-          <CardContent>
-            <Grid container spacing={3}>
               <Grid item xs={12}>
                 <div style={{ height: 400, width: "100%" }}>
                   <DataGrid

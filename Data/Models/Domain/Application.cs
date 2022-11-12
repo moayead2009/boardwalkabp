@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace API.Models.Domain
 {
+    [Table("applications")]
     public class Application
     {
         public Guid Id { get; set; }

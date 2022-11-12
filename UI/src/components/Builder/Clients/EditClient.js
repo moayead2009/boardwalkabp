@@ -50,8 +50,6 @@ export default function EditClient() {
   };
 
   return (
-    <div>
-      <br></br>
       <Card>
         <CardContent>
           <Grid container spacing={2}>
@@ -118,6 +116,5 @@ export default function EditClient() {
           </Grid>
         </CardContent>
       </Card>
-    </div>
   )
 }

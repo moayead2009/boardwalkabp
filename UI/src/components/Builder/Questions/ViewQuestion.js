@@ -31,8 +31,6 @@ export default function ViewQuestion() {
   }, []);
 
   return (
-    <div>
-      <br></br>
       <Card>
         <CardContent>
           <Grid container spacing={2}>
@@ -69,6 +67,5 @@ export default function ViewQuestion() {
           </Grid>
         </CardContent>
       </Card>
-    </div>
   )
 }

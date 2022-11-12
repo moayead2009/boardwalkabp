@@ -1,7 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace API.Models.Domain
 {
+    [Table("questions")]
     public class Question
     {
         public Guid Id { get; set; }

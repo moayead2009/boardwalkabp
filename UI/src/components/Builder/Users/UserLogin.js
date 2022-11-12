@@ -1,12 +1,18 @@
-import React from 'react'
+import React from "react";
 import useStateContext from "../../../hooks/useStateContext";
 import { createAPIEndpoint, ENDPOINTS } from "../../../api";
-import Center from "../../Builder/layout/Center";
-import { useEffect, useState } from "react";
+import Center from "../../layout/Center";
+import { useState } from "react";
 import { useNavigate } from "react-router";
 import { useParams } from "react-router-dom";
-import { Card, CardContent, Grid, TextField, Button, Typography } from "@mui/material";
-import { Box } from "@mui/system";
+import {
+  Card,
+  CardContent,
+  Grid,
+  TextField,
+  Button,
+  Typography,
+} from "@mui/material";
 
 export default function UserLogin() {
   const { context, setContext } = useStateContext();
@@ -29,7 +35,7 @@ export default function UserLogin() {
     });
     return Object.values(temp).every((x) => x === "");
   };
-  
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (validate()) {
@@ -39,8 +45,8 @@ export default function UserLogin() {
           .then((res) => {
             setContext(res.data);
             if (res.data.username !== null) {
-                navigate("/builder/home");
-              }
+              navigate("/builder/home");
+            }
             if (res.data.username === null) {
               setErrors({
                 ...errors,
@@ -69,11 +75,11 @@ export default function UserLogin() {
   return (
     <Center>
       <Card sx={{ width: 400 }}>
-      <CardContent sx={{ textAlign: "center" }}>
+        <CardContent sx={{ textAlign: "center" }}>
           <Grid container spacing={2}>
             <Grid item xs={12}>
-            <Typography variant="h3" sx={{ my: 3 }}>
-                Application Buildeing Platform
+              <Typography variant="h3" sx={{ my: 3 }}>
+                Application Building Platform
               </Typography>
             </Grid>
             <Grid item xs={12}>
@@ -84,7 +90,10 @@ export default function UserLogin() {
                 name="username"
                 value={values.username}
                 onChange={handleInputChange}
-                {...(errors.username && { error: true, helperText: errors.username })}
+                {...(errors.username && {
+                  error: true,
+                  helperText: errors.username,
+                })}
               />
             </Grid>
             <Grid item xs={12}>
@@ -96,11 +105,20 @@ export default function UserLogin() {
                 type="password"
                 value={values.password}
                 onChange={handleInputChange}
-                {...(errors.password && { error: true, helperText: errors.password })}
+                {...(errors.password && {
+                  error: true,
+                  helperText: errors.password,
+                })}
               />
             </Grid>
             <Grid item xs={12}>
-              <Button variant="contained" onClick={handleSubmit} size="large" sx={{ width: "50%" }}>
+              <Button
+                variant="contained"
+                onClick={handleSubmit}
+                size="large"
+                style={{ backgroundColor: '#FF7753' }}
+                sx={{ width: "50%" }}
+              >
                 Login
               </Button>
             </Grid>

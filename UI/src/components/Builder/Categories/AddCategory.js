@@ -47,8 +47,6 @@ export default function AddCategory() {
   }, [id]);
 
   return (
-    <div>
-      <br></br>
       <Card>
       <CardContent>
         <Typography variant="h6" component="div">
@@ -92,6 +90,5 @@ export default function AddCategory() {
         </Box>
       </CardContent>
     </Card>
-    </div>
   );
 }

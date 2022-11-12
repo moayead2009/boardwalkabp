@@ -50,8 +50,6 @@ export default function EditQuestion() {
   };
 
   return (
-    <div>
-      <br></br>
       <Card>
         <CardContent>
           <Grid container spacing={2}>
@@ -91,6 +89,5 @@ export default function EditQuestion() {
           </Grid>
         </CardContent>
       </Card>
-    </div>
   )
 }
